@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "tarea-login-angular": {
+      "hosting": {
+        "LoginAngular": [
+          "tarea-login-angular"
+        ]
+      }
+    }
+  }
+}

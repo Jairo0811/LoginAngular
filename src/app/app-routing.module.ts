@@ -1,11 +1,19 @@
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
+import { RegistroComponent } from './auth/registro/registro.component';
+import { LoginComponent } from './auth/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'forgotpassword', component: ForgotpasswordComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,0 +1,32 @@
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from './../services/auth.service';
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
+})
+export class LoginComponent implements OnInit {
+  loginForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+  });
+  constructor(private authSvc: AuthService, private rooteo: Router) {}
+
+  ngOnInit(): void {}
+
+  async iniciarSesion() {
+    const { email, password } = this.loginForm.value;
+
+    try {
+      const user = await this.authSvc.login(email, password);
+
+      if (user) {
+        this.rooteo.navigate(['/']);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
