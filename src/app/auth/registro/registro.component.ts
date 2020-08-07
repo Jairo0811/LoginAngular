@@ -1,9 +1,7 @@
-import { User } from 'firebase';
-import { AuthService } from './../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-
+import { AuthService } from './../services/auth.service';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -14,7 +12,6 @@ export class RegistroComponent implements OnInit {
     email: new FormControl(''),
     password: new FormControl(''),
   });
-
   constructor(private authSvc: AuthService, private rooteo: Router) {}
 
   ngOnInit(): void {}
