@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from './../services/auth.service';
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -19,14 +20,8 @@ export class RegistroComponent implements OnInit {
   async registro() {
     const { email, password } = this.registerForm.value;
 
-    try {
-      const user = await this.authSvc.login(email, password);
+    const user = await this.authSvc.register(email, password);
 
-      if (user) {
-        this.rooteo.navigate(['/']);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    this.rooteo.navigate(['/']);
   }
 }
