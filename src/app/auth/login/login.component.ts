@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // INICIAR SESION CON USUARIO Y CLAVE
   async iniciarSesion() {
     const { email, password } = this.loginForm.value;
 
@@ -25,6 +26,16 @@ export class LoginComponent implements OnInit {
       if (user) {
         this.rooteo.navigate(['/']);
       }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // INICIAR SESION CON GOOGLE
+
+  loginGoogle() {
+    try {
+      this.authSvc.loginGoogle();
     } catch (error) {
       console.log(error);
     }

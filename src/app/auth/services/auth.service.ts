@@ -1,7 +1,6 @@
+import { auth } from 'firebase/app';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-// import { User } from 'firebase';
-
 
 @Injectable()
 export class AuthService {
@@ -9,6 +8,7 @@ export class AuthService {
 
   constructor(public auth: AngularFireAuth) {}
 
+  // OLVIDE CLAVE
   async forgotPassword(email: string): Promise<void> {
     try {
       return this.auth.sendPasswordResetEmail(email);
@@ -17,6 +17,7 @@ export class AuthService {
     }
   }
 
+  // INICIAR SESION CON USUARIO Y CLAVE
   async login(email: string, password: string) {
     try {
       const result = await this.auth.signInWithEmailAndPassword(
@@ -29,6 +30,17 @@ export class AuthService {
     }
   }
 
+  // INICIAR SESION CON GOOGLE
+
+  async loginGoogle() {
+    try {
+      return this.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // REGISTRO
   async register(email: string, password: string) {
     try {
       const result = await this.auth.createUserWithEmailAndPassword(
@@ -40,13 +52,12 @@ export class AuthService {
     }
   }
 
+  // CERRAR SESION
   async logout() {
-    try{
+    try {
       await this.auth.signOut();
     } catch (error) {
       console.log(error);
     }
   }
-
-
 }
