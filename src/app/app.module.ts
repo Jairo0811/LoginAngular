@@ -10,13 +10,16 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { AngularFireModule } from '@angular/fire';
-import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
+
 // SERVICIOS
 import { AuthService } from './auth/services/auth.service';
 
 // GOOGLE FIREBASE //
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FooterComponent } from './components/footer/footer.component';
+import { AdminComponent } from './guards/admin/admin.component';
+import { EditorComponent } from './guards/editor/editor.component';
+import { SucriptorComponent } from './guards/sucriptor/sucriptor.component';
 
 
 @NgModule({
@@ -26,8 +29,11 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeComponent,
     LoginComponent,
     RegistroComponent,
-    ForgotpasswordComponent,
+  
     FooterComponent,
+    AdminComponent,
+    EditorComponent,
+    SucriptorComponent,
   ],
   imports: [
     BrowserModule,
